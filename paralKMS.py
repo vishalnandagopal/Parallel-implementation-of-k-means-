@@ -52,7 +52,7 @@ if rank == 0:  # master part
     for i in range(len(data)):
         data[i].pop(0)
     data = data[0:10000]
-    data = np.array(data).astype(np.float)
+    data = np.array(data).astype(float)
 
     kmeans = KMeans(n_clusters=num_clusters, random_state=0).fit(data).labels_
     # 	print('data',[ data[i] for i in [indices] ])
@@ -139,9 +139,9 @@ while flag == True:
         # print('ind',indices)
         # print(k,  [data[i] for i in indices] )
         # print('sum',np.sum([data[i] for i in indices], axis=0 ))
-        # print('div',np.divide((np.sum([data[i] for i in indices], axis=0)).astype(np.float),totcounter[k]))
+        # print('div',np.divide((np.sum([data[i] for i in indices], axis=0)).astype(float),totcounter[k]))
         centroids[k - 1] = np.divide(
-            (np.sum([data[i] for i in indices], axis=0)).astype(np.float), totcounter[k]
+            (np.sum([data[i] for i in indices], axis=0)).astype(float), totcounter[k]
         )
 
     centroid = comm.allreduce(centroids, MPI.SUM)
