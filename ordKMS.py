@@ -57,7 +57,7 @@ kmeans = KMeans(n_clusters=num_clusters, random_state=0).fit(data).labels_
 
 # ================================================Initialize centroids matrix=========================
 initial = []
-for i in xrange(num_clusters):
+for i in range(num_clusters):
     initial.append(data[i])
 initial = np.vstack(initial)
 # ====================================================================================================
